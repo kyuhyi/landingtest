@@ -3,8 +3,8 @@
 import { loadTossPayments } from '@tosspayments/tosspayments-sdk'
 
 // 토스페이먼츠 API 개별 연동 키
-const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
-const SECRET_KEY = process.env.TOSS_SECRET_KEY
+const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY!
+const SECRET_KEY = process.env.TOSS_SECRET_KEY!
 
 if (!CLIENT_KEY) {
   throw new Error('NEXT_PUBLIC_TOSS_CLIENT_KEY 환경변수가 설정되지 않았습니다.')

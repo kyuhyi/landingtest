@@ -27,18 +27,22 @@ interface Order {
 
 const STATUS_TEXT = {
   pending: '주문확인중',
+  completed: '결제완료',
+  cancelled: '취소',
+  refunded: '환불완료',
   paid: '결제완료',
   shipping: '배송중',
-  delivered: '배송완료',
-  cancelled: '취소'
+  delivered: '배송완료'
 };
 
 const STATUS_COLOR = {
   pending: 'text-gray-600 bg-gray-100',
+  completed: 'text-blue-600 bg-blue-100',
+  cancelled: 'text-red-600 bg-red-100',
+  refunded: 'text-purple-600 bg-purple-100',
   paid: 'text-blue-600 bg-blue-100',
   shipping: 'text-green-600 bg-green-100',
-  delivered: 'text-gray-900 bg-gray-200',
-  cancelled: 'text-red-600 bg-red-100'
+  delivered: 'text-gray-900 bg-gray-200'
 };
 
 const MOCK_ORDERS: Order[] = [

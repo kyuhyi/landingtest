@@ -92,6 +92,7 @@ export default function UsersManagement() {
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [roleFilter, setRoleFilter] = useState<'all' | 'user' | 'admin'>('all')
+  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'inactive' | 'suspended'>('all')
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -108,18 +109,28 @@ export default function UsersManagement() {
     fetchUsers()
   }, [])
 
-  const filteredUsers = users.filter((user) => {
-    const matchesSearch =
-      user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesRole = roleFilter === 'all' || user.role === roleFilter
-    return matchesSearch && matchesRole
-  })
-
   const formatDate = (timestamp: Timestamp) => {
     const date = timestamp.toDate()
     return date.toLocaleDateString('ko-KR')
   }
+
+  const filteredUsers: UserTableData[] = users
+    .filter((user) => {
+      const matchesSearch =
+        user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchQuery.toLowerCase())
+      const matchesRole = roleFilter === 'all' || user.role === roleFilter
+      return matchesSearch && matchesRole
+    })
+    .map((user) => ({
+      id: user.uid,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      status: 'active' as const,
+      createdAt: formatDate(user.createdAt),
+      lastLoginAt: user.updatedAt ? formatDate(user.updatedAt) : undefined,
+    }))
 
   const columns: ColumnDef<UserTableData>[] = [
     {
@@ -173,7 +184,7 @@ export default function UsersManagement() {
       label: '삭제',
       onClick: (user) => {
         if (confirm(`정말 ${user.name} 회원을 삭제하시겠습니까?`)) {
-          setUsers(users.filter((u) => u.uid !== user.uid))
+          setUsers(users.filter((u) => u.uid !== user.id))
         }
       },
       variant: 'destructive',

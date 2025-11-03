@@ -89,11 +89,11 @@ export default function ReviewWriteModal({ productId, productName, onClose, onSu
       // Firestore에 리뷰 저장
       console.log('💾 Firestore에 리뷰 저장 중...');
       await createReview({
-        id: reviewId,
         productId,
+        productName,
         userId: userProfile.id,
         userName: userProfile.name || '익명',
-        userEmail: userProfile.email,
+        userProfileImage: userProfile.profileImageUrl,
         rating,
         content: content.trim(),
         images: imageUrls,

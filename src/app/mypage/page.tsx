@@ -88,7 +88,7 @@ export default function MypagePage() {
                     {order.createdAt?.toDate().toLocaleDateString('ko-KR')} - {
                       order.status === 'completed' ? '결제완료' :
                       order.status === 'pending' ? '결제대기' :
-                      order.status === 'failed' ? '결제실패' : '취소됨'
+                      order.status === 'cancelled' ? '취소됨' : '환불완료'
                     }
                   </p>
                   <p className="text-xs font-semibold text-blue-600 mt-1">
