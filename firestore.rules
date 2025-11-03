@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 헬퍼 함수
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Users 컬렉션
+    match /users/{userId} {
+      // 누구나 읽기 가능 (프로필 정보)
+      allow read: if true;
+
+      // 본인 또는 관리자만 생성/수정 가능
+      allow create: if isSignedIn();
+      allow update: if isOwner(userId) || isAdmin();
+
+      // 본인 또는 관리자만 삭제 가능
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // Orders 컬렉션
+    match /orders/{orderId} {
+      // 본인의 주문 또는 관리자만 읽기 가능
+      allow read: if isSignedIn() &&
+                     (resource.data.userId == request.auth.uid || isAdmin());
+
+      // 인증된 사용자만 생성 가능
+      allow create: if isSignedIn();
+
+      // 본인 또는 관리자만 수정 가능
+      allow update: if isSignedIn() &&
+                       (resource.data.userId == request.auth.uid || isAdmin());
+
+      // 관리자만 삭제 가능
+      allow delete: if isAdmin();
+    }
+
+    // Reviews 컬렉션
+    match /reviews/{reviewId} {
+      // 누구나 읽기 가능 (공개 리뷰)
+      allow read: if true;
+
+      // 인증된 사용자만 생성 가능
+      allow create: if isSignedIn();
+
+      // 본인 또는 관리자만 수정/삭제 가능
+      allow update, delete: if isSignedIn() &&
+                               (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // Products 컬렉션 (선택사항)
+    match /products/{productId} {
+      // 누구나 읽기 가능
+      allow read: if true;
+
+      // 관리자만 생성/수정/삭제 가능
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

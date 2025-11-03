@@ -1,0 +1,28 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // 프로필 이미지
+    match /profiles/{userId}/{fileName} {
+      // 누구나 볼 수 있음
+      allow read: if true;
+
+      // 본인의 프로필만 업로드 가능
+      allow write: if request.auth != null &&
+                      request.auth.uid == userId &&
+                      request.resource.size < 5 * 1024 * 1024 &&
+                      request.resource.contentType.matches('image/.*');
+    }
+
+    // 리뷰 이미지
+    match /reviews/{reviewId}/{fileName} {
+      // 누구나 볼 수 있음
+      allow read: if true;
+
+      // 인증된 사용자만 업로드 가능
+      allow write: if request.auth != null &&
+                      request.resource.size < 5 * 1024 * 1024 &&
+                      request.resource.contentType.matches('image/.*');
+    }
+  }
+}

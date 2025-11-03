@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-black: #000000;
+  --color-dark: #0a0a0a;
+  --color-gray-900: #1a1a1a;
+  --color-gray-800: #262626;
+  --color-gray-700: #404040;
+  --color-gray-600: #525252;
+  --color-gray-400: #94a3b8;
+  --color-gray-300: #cbd5e1;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-500: #3b82f6;
+  --color-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', 'Noto Sans KR', sans-serif;
+  background: var(--color-dark);
+  color: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .problem-card {
+    background: var(--color-gray-900);
+    border: 1px solid var(--color-gray-800);
+  }
+
+  .feature-card {
+    background: var(--color-dark);
+    border: 1px solid var(--color-gray-800);
+  }
+
+  .step-card {
+    background: transparent;
+  }
+
+  .curriculum-card {
+    background: var(--color-dark);
+    border: 1px solid var(--color-gray-800);
+  }
+
+  .testimonial-card {
+    background: var(--color-gray-900);
+    border: 1px solid var(--color-gray-800);
+  }
+
+  .faq-card {
+    background: var(--color-dark);
+    border: 1px solid var(--color-gray-800);
+  }
+
+  .form-card {
+    background: var(--color-dark);
+    border: 1px solid var(--color-gray-800);
+  }
+}
