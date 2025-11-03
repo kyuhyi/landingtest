@@ -173,7 +173,7 @@ export default function UsersManagement() {
       label: '삭제',
       onClick: (user) => {
         if (confirm(`정말 ${user.name} 회원을 삭제하시겠습니까?`)) {
-          setUsers(users.filter((u) => u.id !== user.id))
+          setUsers(users.filter((u) => u.uid !== user.uid))
         }
       },
       variant: 'destructive',
