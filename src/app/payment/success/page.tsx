@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Download, Home, BookOpen } from 'lucide-react'
@@ -8,7 +8,7 @@ import { useAuth } from '@/lib/auth-context'
 import { createOrder } from '@/lib/firestore-utils'
 import { getProductById } from '@/data/products'
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { userProfile, loading } = useAuth()
@@ -249,5 +249,13 @@ export default function PaymentSuccessPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
   )
 }
