@@ -7,7 +7,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative py-40 px-6 overflow-hidden bg-gradient-to-b from-bsd-dark via-bsd-gray-900 to-bsd-dark">
+      <section className="relative py-20 md:py-40 px-4 md:px-6 overflow-hidden bg-gradient-to-b from-bsd-dark via-bsd-gray-900 to-bsd-dark">
         <div
           className="absolute top-0 left-0 w-full h-full opacity-50"
           style={{
@@ -19,28 +19,28 @@ export default function Home() {
           <span className="inline-block mb-6 px-5 py-2 bg-gradient-to-r from-bsd-blue-600 to-bsd-blue-500 text-white rounded-full text-sm font-semibold tracking-wider">
             비전공자를 위한 AI 코딩 교육
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
             <span className="block text-white">코딩 몰라도</span>
             <span className="block bg-gradient-to-r from-white via-bsd-gray-400 to-bsd-gray-400 bg-clip-text text-transparent">
               <span className="text-bsd-blue-500">24시간 안에</span>
             </span>
             <span className="block text-white">웹사이트 만드는 법</span>
           </h1>
-          <p className="text-xl md:text-2xl text-bsd-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-bsd-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
             1만 명이 선택한 BSD 바이브코딩의 검증된 온라인 VOD 강의.
             <br />
             AI를 활용해 실전 프로젝트를 완성하세요.
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4">
             <a
               href="#lead-form"
-              className="px-12 py-5 bg-gradient-to-r from-bsd-blue-600 to-bsd-blue-700 rounded-xl text-white font-bold text-lg shadow-[0_4px_20px_rgba(37,99,235,0.3)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(37,99,235,0.5)] hover:-translate-y-1 no-underline"
+              className="px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-bsd-blue-600 to-bsd-blue-700 rounded-xl text-white font-bold text-base sm:text-lg shadow-[0_4px_20px_rgba(37,99,235,0.3)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(37,99,235,0.5)] hover:-translate-y-1 no-underline text-center"
             >
               지금 무료로 시작하기 →
             </a>
             <a
               href="#curriculum"
-              className="px-12 py-5 bg-transparent border-2 border-bsd-gray-700 rounded-xl text-white font-semibold text-lg transition-all duration-300 hover:border-bsd-blue-600 hover:bg-bsd-blue-600/10 hover:-translate-y-1 no-underline"
+              className="px-8 sm:px-12 py-4 sm:py-5 bg-transparent border-2 border-bsd-gray-700 rounded-xl text-white font-semibold text-base sm:text-lg transition-all duration-300 hover:border-bsd-blue-600 hover:bg-bsd-blue-600/10 hover:-translate-y-1 no-underline text-center"
             >
               커리큘럼 보기
             </a>
@@ -49,71 +49,71 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-6 bg-bsd-black border-t border-bsd-gray-900 border-b border-bsd-gray-900">
+      <section className="py-12 md:py-16 px-4 md:px-6 bg-bsd-black border-t border-bsd-gray-900 border-b border-bsd-gray-900">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            <div className="text-center p-5">
-              <div className="text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
+            <div className="text-center p-3 md:p-5">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
                 10,000+
               </div>
               <div className="text-bsd-gray-400 text-base font-medium">수강생</div>
             </div>
-            <div className="text-center p-5">
-              <div className="text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
+            <div className="text-center p-3 md:p-5">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
                 24시간
               </div>
-              <div className="text-bsd-gray-400 text-base font-medium">완성 시간</div>
+              <div className="text-bsd-gray-400 text-sm md:text-base font-medium">완성 시간</div>
             </div>
-            <div className="text-center p-5">
-              <div className="text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
+            <div className="text-center p-3 md:p-5">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
                 98%
               </div>
-              <div className="text-bsd-gray-400 text-base font-medium">만족도</div>
+              <div className="text-bsd-gray-400 text-sm md:text-base font-medium">만족도</div>
             </div>
-            <div className="text-center p-5">
-              <div className="text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
+            <div className="text-center p-3 md:p-5">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-bsd-blue-600 mb-2">
                 무제한
               </div>
-              <div className="text-bsd-gray-400 text-base font-medium">평생 수강</div>
+              <div className="text-bsd-gray-400 text-sm md:text-base font-medium">평생 수강</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section className="py-24 px-6">
+      <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-bsd-gray-400 text-lg font-semibold">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="inline-block mb-4 text-bsd-gray-400 text-base md:text-lg font-semibold">
               💭 이런 고민 하셨나요?
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 px-4">
               사업 아이디어는 있는데
               <br />
               기술이 발목을 잡나요?
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="problem-card rounded-2xl p-10 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-bsd-blue-600/15">
-              <div className="text-5xl mb-6">😫</div>
-              <h3 className="text-xl font-bold mb-4">개발자 구하기가 너무 어렵고 비싸요</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="problem-card rounded-2xl p-6 md:p-10 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-bsd-blue-600/15">
+              <div className="text-4xl md:text-5xl mb-4 md:mb-6">😫</div>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">개발자 구하기가 너무 어렵고 비싸요</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 프리랜서 개발자는 최소 300만원. 외주 업체는 1,000만원 이상. 소규모
                 사업자에겐 너무 큰 부담입니다.
               </p>
             </div>
-            <div className="problem-card rounded-2xl p-10 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-bsd-blue-600/15">
-              <div className="text-5xl mb-6">⏰</div>
-              <h3 className="text-xl font-bold mb-4">빠르게 테스트하고 싶은데 시간이 너무 걸려요</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="problem-card rounded-2xl p-6 md:p-10 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-bsd-blue-600/15">
+              <div className="text-4xl md:text-5xl mb-4 md:mb-6">⏰</div>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">빠르게 테스트하고 싶은데 시간이 너무 걸려요</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 아이디어를 검증하려면 빠른 실행이 중요한데, 개발 완료까지 몇 달씩
                 기다려야 합니다.
               </p>
             </div>
-            <div className="problem-card rounded-2xl p-10 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-bsd-blue-600/15">
-              <div className="text-5xl mb-6">🤯</div>
-              <h3 className="text-xl font-bold mb-4">코딩을 배우려니 너무 어렵고 막막해요</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="problem-card rounded-2xl p-6 md:p-10 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-bsd-blue-600/15">
+              <div className="text-4xl md:text-5xl mb-4 md:mb-6">🤯</div>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">코딩을 배우려니 너무 어렵고 막막해요</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 유튜브와 책으로 독학하려 했지만 전문 용어와 복잡한 문법에 좌절했습니다.
               </p>
             </div>
@@ -122,61 +122,61 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-6 bg-gradient-to-b from-bsd-dark to-bsd-gray-900">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-bsd-dark to-bsd-gray-900">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-bsd-blue-500 text-lg font-semibold">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="inline-block mb-4 text-bsd-blue-500 text-base md:text-lg font-semibold">
               해결책
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 px-4">
               AI 바이브코딩으로
               <br />
               24시간 만에 웹사이트 완성
             </h2>
-            <p className="text-xl text-bsd-gray-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-bsd-gray-400 max-w-3xl mx-auto px-4">
               어려운 코딩 문법 대신, AI에게 명령하는 방법을 배웁니다. 실전 프로젝트를
               만들며 자연스럽게 실력이 향상됩니다.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="feature-card rounded-2xl p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">AI 협업 스킬</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+            <div className="feature-card rounded-2xl p-6 md:p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">AI 협업 스킬</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 Claude, ChatGPT를 활용한 실전 개발 방법론. 코딩 지식 없이도
                 프로페셔널한 결과물을 만듭니다.
               </p>
             </div>
-            <div className="feature-card rounded-2xl p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">빠른 실행력</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="feature-card rounded-2xl p-6 md:p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">빠른 실행력</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 이론 최소화, 실습 최대화. 강의를 듣자마자 바로 내 프로젝트에 적용
                 가능합니다.
               </p>
             </div>
-            <div className="feature-card rounded-2xl p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">비즈니스 중심 학습</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="feature-card rounded-2xl p-6 md:p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">비즈니스 중심 학습</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 랜딩페이지, 결제 시스템, 자동화 도구 등 실제 수익 창출에 필요한 것만
                 배웁니다.
               </p>
             </div>
-            <div className="feature-card rounded-2xl p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">반응형 웹 제작</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="feature-card rounded-2xl p-6 md:p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">반응형 웹 제작</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 PC, 태블릿, 모바일 모든 기기에서 완벽하게 동작하는 반응형 웹사이트를
                 만듭니다.
               </p>
             </div>
-            <div className="feature-card rounded-2xl p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">실전 통합 연동</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="feature-card rounded-2xl p-6 md:p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">실전 통합 연동</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 Toss 결제, Google Forms, Zapier 자동화 등 실무에 필요한 서비스를 직접
                 연동합니다.
               </p>
             </div>
-            <div className="feature-card rounded-2xl p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">평생 무제한 수강</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+            <div className="feature-card rounded-2xl p-6 md:p-12 transition-all duration-300 hover:border-bsd-blue-600 hover:-translate-y-2 hover:shadow-xl hover:shadow-bsd-blue-600/20 relative overflow-hidden">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">평생 무제한 수강</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 한 번 결제로 평생 수강 가능. 업데이트되는 신규 강의도 무료로
                 제공됩니다.
               </p>
@@ -186,9 +186,9 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-24 px-6 bg-bsd-dark">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-bsd-dark">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <span className="inline-block mb-4 text-bsd-gray-400 text-lg font-semibold">
               학습 프로세스
             </span>
@@ -198,13 +198,13 @@ export default function Home() {
               웹사이트 제작자가 됩니다
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <div className="step-card text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-bsd-blue-600 to-bsd-blue-700 flex items-center justify-center text-3xl font-bold">
                 1
               </div>
-              <h3 className="text-2xl font-bold mb-4">AI 명령법 익히기</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">AI 명령법 익히기</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 효과적으로 AI와 대화하는 프롬프트 작성법을 실전 예제로 학습합니다.
               </p>
             </div>
@@ -212,8 +212,8 @@ export default function Home() {
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-bsd-blue-600 to-bsd-blue-700 flex items-center justify-center text-3xl font-bold">
                 2
               </div>
-              <h3 className="text-2xl font-bold mb-4">실습으로 바로 적용</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">실습으로 바로 적용</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 랜딩페이지, 결제 페이지 등을 직접 만들며 hands-on 경험을 쌓습니다.
               </p>
             </div>
@@ -221,8 +221,8 @@ export default function Home() {
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-bsd-blue-600 to-bsd-blue-700 flex items-center justify-center text-3xl font-bold">
                 3
               </div>
-              <h3 className="text-2xl font-bold mb-4">내 프로젝트 완성</h3>
-              <p className="text-bsd-gray-400 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">내 프로젝트 완성</h3>
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 배운 내용을 활용해 실제 비즈니스에 활용 가능한 웹사이트를 완성합니다.
               </p>
             </div>
@@ -233,7 +233,7 @@ export default function Home() {
       {/* Curriculum Section */}
       <section id="curriculum" className="py-24 px-6 bg-gradient-to-b from-bsd-gray-900 to-bsd-dark">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <span className="inline-block mb-4 text-bsd-blue-500 text-lg font-semibold">
               커리큘럼
             </span>
@@ -298,7 +298,7 @@ export default function Home() {
                 </span>
                 <div>
                   <h4 className="text-2xl font-bold mb-3">{item.title}</h4>
-                  <p className="text-bsd-gray-400 leading-relaxed">{item.description}</p>
+                  <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -307,9 +307,9 @@ export default function Home() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-24 px-6 bg-bsd-dark">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-bsd-dark">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <span className="inline-block mb-4 text-bsd-gray-400 text-lg font-semibold">
               수강생 후기
             </span>
@@ -319,7 +319,7 @@ export default function Home() {
               검증된 교육 프로그램
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 text: '"코딩 경험이 전혀 없었는데 3주 만에 제 브랜드 홈페이지를 직접 만들었어요. 외주 맡겼으면 최소 500만원은 들었을 텐데, 직접 만드니 뿌듯하고 수정도 자유롭게 할 수 있어요!"',
@@ -360,9 +360,9 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 px-6 bg-gradient-to-b from-bsd-gray-900 to-bsd-dark">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-bsd-gray-900 to-bsd-dark">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <span className="inline-block mb-4 text-bsd-blue-500 text-lg font-semibold">
               자주 묻는 질문
             </span>
@@ -415,7 +415,7 @@ export default function Home() {
       {/* Lead Capture Form */}
       <section id="lead-form" className="py-24 px-6 bg-bsd-dark">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <span className="inline-block mb-4 text-bsd-blue-500 text-lg font-semibold">
               특별 혜택
             </span>
@@ -508,7 +508,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 bg-gradient-to-b from-bsd-gray-900 to-bsd-dark text-center">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-bsd-gray-900 to-bsd-dark text-center">
         <div className="max-w-4xl mx-auto">
           <span className="inline-block mb-6 px-6 py-3 bg-bsd-blue-600/20 text-bsd-blue-500 rounded-full text-sm font-bold">
             선착순 100명 한정 특별 혜택
@@ -536,7 +536,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <h4 className="text-lg font-bold mb-4">BSD 바이브코딩</h4>
-              <p className="text-bsd-gray-400 leading-relaxed">
+              <p className="text-sm md:text-base text-bsd-gray-400 leading-relaxed">
                 비전공자를 위한
                 <br />
                 AI 바이브코딩 전문 교육센터
