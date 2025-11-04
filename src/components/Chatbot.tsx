@@ -100,7 +100,7 @@ export default function Chatbot() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 w-[90px] h-[90px] bg-transparent border-none cursor-pointer z-[999] transition-all duration-300 hover:scale-110"
+        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-[70px] h-[70px] sm:w-[90px] sm:h-[90px] bg-transparent border-none cursor-pointer z-[999] transition-all duration-300 hover:scale-110"
         style={{
           filter: 'drop-shadow(0 4px 12px rgba(37, 99, 235, 0.3))',
           animation: 'float 3s ease-in-out infinite',
@@ -146,7 +146,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-8 right-8 w-full max-w-[450px] h-[700px] bg-[#2d2d2d] rounded-[20px] shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden z-[999]">
+    <div className="fixed bottom-4 right-4 left-4 sm:bottom-8 sm:right-8 sm:left-auto w-auto sm:w-full sm:max-w-[450px] h-[calc(100vh-2rem)] sm:h-[700px] max-h-[700px] bg-[#2d2d2d] rounded-[20px] shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden z-[999]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] p-5 flex items-center gap-4 shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
         <div className="w-[50px] h-[50px] bg-white rounded-full p-2 flex items-center justify-center">
