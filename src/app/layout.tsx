@@ -22,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+        <script
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
           integrity="sha384-TiCUE00h+Q9+GfbIbKYl6iVbH+RJNGqvB5FIi4XABHv/a2TDXCT9vtFo6V+3mRVY"
-          crossOrigin="anonymous" async></script>
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body>
         <AuthProvider>

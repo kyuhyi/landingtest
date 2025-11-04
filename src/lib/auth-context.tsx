@@ -166,9 +166,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     console.log('🔥 Kakao 소셜 로그인 시작 (JavaScript SDK)')
 
     try {
-      // Kakao SDK 초기화 확인
-      if (typeof window === 'undefined' || !(window as any).Kakao) {
-        throw new Error('카카오 SDK가 로드되지 않았습니다.')
+      // Kakao SDK 로딩 대기
+      if (typeof window === 'undefined') {
+        throw new Error('브라우저 환경이 아닙니다.')
+      }
+
+      // SDK가 로드될 때까지 최대 5초 대기
+      let attempts = 0
+      while (!(window as any).Kakao && attempts < 50) {
+        await new Promise(resolve => setTimeout(resolve, 100))
+        attempts++
+      }
+
+      if (!(window as any).Kakao) {
+        throw new Error('카카오 SDK 로딩에 실패했습니다. 페이지를 새로고침해주세요.')
       }
 
       const Kakao = (window as any).Kakao
