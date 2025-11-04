@@ -5,8 +5,6 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Download, Home, BookOpen } from 'lucide-react'
 import { useAuth } from '@/lib/auth-context'
-import { createOrder } from '@/lib/firestore-utils'
-import { getProductById } from '@/data/products'
 
 function PaymentSuccessContent() {
   const router = useRouter()
@@ -82,7 +80,13 @@ function PaymentSuccessContent() {
     try {
       console.log('💳 결제 승인 시작:', { paymentKey, orderId, amount, productId, orderName })
 
-      // 1. 서버 사이드 API를 통해 안전하게 결제 승인 처리
+      if (!userProfile) {
+        console.error('❌ userProfile이 없습니다. 로그인 상태를 확인하세요.')
+        alert('사용자 정보를 찾을 수 없습니다. 다시 로그인해주세요.')
+        return
+      }
+
+      // 서버 사이드 API를 통해 결제 승인 + Firestore 저장 처리
       const response = await fetch('/api/payment/confirm', {
         method: 'POST',
         headers: {
@@ -92,6 +96,13 @@ function PaymentSuccessContent() {
           paymentKey,
           orderId,
           amount,
+          // 사용자 정보 추가
+          userId: userProfile.uid,
+          userEmail: userProfile.email,
+          userName: userProfile.name,
+          // 상품 정보 추가
+          productId,
+          productName: orderName,
         }),
       })
 
@@ -102,43 +113,7 @@ function PaymentSuccessContent() {
       }
 
       const result = await response.json()
-      console.log('✅ 결제 승인 완료:', result)
-
-      // 2. Firestore에 주문 데이터 저장
-      if (!userProfile) {
-        console.error('❌ userProfile이 없습니다. 로그인 상태를 확인하세요.')
-        alert('사용자 정보를 찾을 수 없습니다. 다시 로그인해주세요.')
-        return
-      }
-
-      console.log('💾 Firestore에 주문 데이터 저장 시작...')
-      console.log('📦 저장할 주문 데이터:', {
-        id: orderId,
-        userId: userProfile.id,
-        userEmail: userProfile.email,
-        userName: userProfile.name,
-        productId,
-        productName: orderName,
-        amount: parseInt(amount),
-        status: 'completed',
-        paymentKey,
-        orderId,
-      })
-
-      await createOrder({
-        id: orderId,
-        userId: userProfile.id,
-        userEmail: userProfile.email,
-        userName: userProfile.name,
-        productId,
-        productName: orderName,
-        amount: parseInt(amount),
-        status: 'completed',
-        paymentKey,
-        orderId,
-      })
-
-      console.log('✅ 주문 데이터 Firestore 저장 완료!')
+      console.log('✅ 결제 승인 및 주문 저장 완료:', result)
       console.log('🔍 Firebase Console에서 확인: orders 컬렉션 → 문서 ID:', orderId)
     } catch (error) {
       console.error('❌ 결제 처리 오류:', error)
