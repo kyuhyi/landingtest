@@ -2,16 +2,12 @@
 
 import { loadTossPayments } from '@tosspayments/tosspayments-sdk'
 
-// 토스페이먼츠 API 개별 연동 키
+// 토스페이먼츠 클라이언트 키 (공개 가능)
+// 💡 주의: SECRET_KEY는 서버에서만 사용! 클라이언트에서는 절대 사용 금지
 const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY!
-const SECRET_KEY = process.env.TOSS_SECRET_KEY!
 
 if (!CLIENT_KEY) {
   throw new Error('NEXT_PUBLIC_TOSS_CLIENT_KEY 환경변수가 설정되지 않았습니다.')
-}
-
-if (!SECRET_KEY) {
-  throw new Error('TOSS_SECRET_KEY 환경변수가 설정되지 않았습니다.')
 }
 
 export interface PaymentInfo {
