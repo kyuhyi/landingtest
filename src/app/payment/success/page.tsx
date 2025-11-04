@@ -97,7 +97,7 @@ function PaymentSuccessContent() {
           orderId,
           amount,
           // 사용자 정보 추가
-          userId: userProfile.uid,
+          userId: userProfile.id,
           userEmail: userProfile.email,
           userName: userProfile.name,
           // 상품 정보 추가
