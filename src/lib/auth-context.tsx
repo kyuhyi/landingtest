@@ -195,69 +195,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       console.log('📝 Kakao 로그인 팝업 열기...')
-
-      // 카카오 로그인 팝업
-      await new Promise((resolve, reject) => {
-        Kakao.Auth.login({
-          success: async (authObj: any) => {
-            console.log('✅ 카카오 인증 성공:', authObj)
-
-            try {
-              // 카카오 사용자 정보 가져오기
-              Kakao.API.request({
-                url: '/v2/user/me',
-                success: async (res: any) => {
-                  console.log('📥 카카오 사용자 정보:', res)
-
-                  const kakaoAccount = res.kakao_account
-                  const profile = kakaoAccount.profile
-                  const email = kakaoAccount.email
-                  const name = profile.nickname || email?.split('@')[0] || '사용자'
-                  const profileImageUrl = profile.profile_image_url
-
-                  // Firebase Custom Token 발급을 위해 서버 API 호출
-                  const response = await fetch('/api/auth/kakao', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                      kakaoUserId: res.id,
-                      email,
-                      name,
-                      profileImageUrl,
-                    }),
-                  })
-
-                  if (!response.ok) {
-                    throw new Error('Firebase 인증 실패')
-                  }
-
-                  const { customToken } = await response.json()
-
-                  // Custom Token으로 Firebase 로그인
-                  const { signInWithCustomToken } = await import('firebase/auth')
-                  const firebaseUser = await signInWithCustomToken(auth, customToken)
-                  console.log('✅ Firebase 로그인 성공:', firebaseUser.user.uid)
-
-                  resolve(firebaseUser)
-                },
-                fail: (error: any) => {
-                  console.error('❌ 카카오 사용자 정보 조회 실패:', error)
-                  reject(error)
-                },
-              })
-            } catch (error) {
-              console.error('❌ Firebase 인증 오류:', error)
-              reject(error)
-            }
-          },
-          fail: (err: any) => {
-            console.error('❌ 카카오 로그인 실패:', err)
-            reject(new Error('카카오 로그인이 취소되었습니다.'))
-          },
-        })
+      console.log('🔍 Kakao SDK 구조:', {
+        hasAuth: !!Kakao.Auth,
+        authMethods: Kakao.Auth ? Object.keys(Kakao.Auth) : [],
+        hasAPI: !!Kakao.API,
       })
+
+      // Kakao SDK v2.x는 authorize 메서드 사용
+      const redirectUri = `${window.location.origin}/api/auth/kakao/callback`
+
+      // 카카오 로그인 (간단한 방식: authorize 사용)
+      Kakao.Auth.authorize({
+        redirectUri,
+        scope: 'profile_nickname,profile_image,account_email',
+        throughTalk: false,
+      })
+
     } catch (error: any) {
       console.error('❌ Kakao 로그인 오류:', error)
       throw error
