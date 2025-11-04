@@ -40,3 +40,5 @@ next-env.d.ts
 # backup
 /backup
 bsd-skills/
+
+.vercel

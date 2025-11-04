@@ -163,40 +163,92 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const loginWithKakao = async () => {
-    console.log('🔥 Kakao 소셜 로그인 시작')
+    console.log('🔥 Kakao 소셜 로그인 시작 (JavaScript SDK)')
 
     try {
-      const provider = new OAuthProvider('oidc.kakao')
-
-      console.log('📝 Kakao 팝업 열기...')
-      const result = await signInWithPopup(auth, provider)
-      const firebaseUser = result.user
-      console.log('✅ Kakao 로그인 성공:', firebaseUser.uid)
-
-      // Firestore에 사용자 프로필 확인 및 생성
-      let userDoc = await getUser(firebaseUser.uid)
-
-      if (!userDoc) {
-        console.log('💾 새 사용자 - Firestore에 프로필 생성 중...')
-        const userData = {
-          uid: firebaseUser.uid,
-          email: firebaseUser.email!,
-          name: firebaseUser.displayName || firebaseUser.email!.split('@')[0],
-          role: 'user' as const,
-          profileImageUrl: firebaseUser.photoURL || undefined,
-        }
-        await createUser(userData)
-        console.log('✅ Kakao 사용자 프로필 저장 완료')
-      } else {
-        console.log('✅ 기존 사용자 로그인 완료')
+      // Kakao SDK 초기화 확인
+      if (typeof window === 'undefined' || !(window as any).Kakao) {
+        throw new Error('카카오 SDK가 로드되지 않았습니다.')
       }
+
+      const Kakao = (window as any).Kakao
+
+      // SDK 초기화 (한 번만 실행)
+      if (!Kakao.isInitialized()) {
+        const jsKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY
+        if (!jsKey) {
+          throw new Error('NEXT_PUBLIC_KAKAO_JS_KEY 환경변수가 설정되지 않았습니다.')
+        }
+        Kakao.init(jsKey)
+        console.log('✅ Kakao SDK 초기화 완료')
+      }
+
+      console.log('📝 Kakao 로그인 팝업 열기...')
+
+      // 카카오 로그인 팝업
+      await new Promise((resolve, reject) => {
+        Kakao.Auth.login({
+          success: async (authObj: any) => {
+            console.log('✅ 카카오 인증 성공:', authObj)
+
+            try {
+              // 카카오 사용자 정보 가져오기
+              Kakao.API.request({
+                url: '/v2/user/me',
+                success: async (res: any) => {
+                  console.log('📥 카카오 사용자 정보:', res)
+
+                  const kakaoAccount = res.kakao_account
+                  const profile = kakaoAccount.profile
+                  const email = kakaoAccount.email
+                  const name = profile.nickname || email?.split('@')[0] || '사용자'
+                  const profileImageUrl = profile.profile_image_url
+
+                  // Firebase Custom Token 발급을 위해 서버 API 호출
+                  const response = await fetch('/api/auth/kakao', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      kakaoUserId: res.id,
+                      email,
+                      name,
+                      profileImageUrl,
+                    }),
+                  })
+
+                  if (!response.ok) {
+                    throw new Error('Firebase 인증 실패')
+                  }
+
+                  const { customToken } = await response.json()
+
+                  // Custom Token으로 Firebase 로그인
+                  const { signInWithCustomToken } = await import('firebase/auth')
+                  const firebaseUser = await signInWithCustomToken(auth, customToken)
+                  console.log('✅ Firebase 로그인 성공:', firebaseUser.user.uid)
+
+                  resolve(firebaseUser)
+                },
+                fail: (error: any) => {
+                  console.error('❌ 카카오 사용자 정보 조회 실패:', error)
+                  reject(error)
+                },
+              })
+            } catch (error) {
+              console.error('❌ Firebase 인증 오류:', error)
+              reject(error)
+            }
+          },
+          fail: (err: any) => {
+            console.error('❌ 카카오 로그인 실패:', err)
+            reject(new Error('카카오 로그인이 취소되었습니다.'))
+          },
+        })
+      })
     } catch (error: any) {
       console.error('❌ Kakao 로그인 오류:', error)
-      if (error.code === 'auth/popup-closed-by-user') {
-        throw new Error('로그인 팝업이 닫혔습니다.')
-      } else if (error.code === 'auth/cancelled-popup-request') {
-        throw new Error('로그인이 취소되었습니다.')
-      }
       throw error
     }
   }
